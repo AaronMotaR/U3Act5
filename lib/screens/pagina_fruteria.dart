@@ -1,10 +1,10 @@
-import 'package:_food_delivery_ui_practice/models/food.dart';
-import 'package:_food_delivery_ui_practice/models/restaurant.dart';
+import 'package:mota/models/fruta.dart';
+import 'package:mota/models/fruteria.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class RestaurantScreen extends StatefulWidget {
-  final Restaurant restaurant;
+  final Fruteria restaurant;
 
   RestaurantScreen({required this.restaurant});
 
@@ -44,7 +44,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                     onPressed: () {},
                     icon: Icon(Icons.favorite),
                     iconSize: 35,
-                    color: Colors.deepOrangeAccent,
+                    color: Colors.lightGreen,
                   )
                 ],
               ),
@@ -60,11 +60,11 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    widget.restaurant.name,
+                    widget.restaurant.nombre,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    "0.2 miles away",
+                    "A 2 kilometros de ti",
                     style: TextStyle(fontSize: 16),
                   )
                 ],
@@ -85,7 +85,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                   }),
               SizedBox(height: 10),
               Text(
-                widget.restaurant.address,
+                widget.restaurant.direccion,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ],
@@ -100,24 +100,24 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                   splashColor: Colors.grey,
                   elevation: 4,
                   hoverElevation: 10,
-                  color: Colors.deepOrangeAccent,
+                  color: Colors.lightGreen,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
                   onPressed: () {},
                   child: Text(
-                    "Reviews",
+                    "Reseñas",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   )),
               MaterialButton(
                   splashColor: Colors.grey,
                   elevation: 4,
                   hoverElevation: 10,
-                  color: Colors.deepOrangeAccent,
+                  color: Colors.lightGreen,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
                   onPressed: () {},
                   child: Text(
-                    "Contact",
+                    "Contacto",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ))
             ],
@@ -125,7 +125,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
         ),
         SizedBox(height: 10),
         Text(
-          "Menu",
+          "Catalogo",
           style: TextStyle(
               fontSize: 20, fontWeight: FontWeight.w600, letterSpacing: 1.2),
         ),
@@ -134,8 +134,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
             child: GridView.count(
           padding: EdgeInsets.all(10),
           crossAxisCount: 2,
-          children: List.generate(widget.restaurant.menu.length, (index) {
-            Food food = widget.restaurant.menu[index];
+          children: List.generate(widget.restaurant.lista.length, (index) {
+            Fruta food = widget.restaurant.lista[index];
             return _buildMenuItems(food);
           }),
         ))
@@ -143,7 +143,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
     ));
   }
 
-  Widget _buildMenuItems(Food menuItems) {
+  Widget _buildMenuItems(Fruta menuItems) {
     return Center(
       child: Stack(
         alignment: Alignment.center,
@@ -178,14 +178,14 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                menuItems.name,
+                menuItems.nombre,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,
                     fontWeight: FontWeight.w600),
               ),
               Text(
-                "\$${menuItems.price}",
+                "\$${menuItems.precio}",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -199,7 +199,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
               child: Container(
                 // width: 48,
                 decoration: BoxDecoration(
-                    color: Colors.deepOrangeAccent,
+                    color: Colors.lightGreen,
                     borderRadius: BorderRadius.circular(30)),
                 child: IconButton(
                     onPressed: () {},

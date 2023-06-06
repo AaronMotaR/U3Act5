@@ -1,11 +1,11 @@
-import 'package:_food_delivery_ui_practice/data/data.dart';
-import 'package:_food_delivery_ui_practice/models/restaurant.dart';
-import 'package:_food_delivery_ui_practice/screens/cart_screen.dart';
-import 'package:_food_delivery_ui_practice/screens/restaurant_screen.dart';
+import 'package:mota/data/data.dart';
+import 'package:mota/models/fruteria.dart';
+import 'package:mota/screens/pantalla_carro.dart';
+import 'package:mota/screens/pagina_fruteria.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../widgets/recent_order.dart';
+import '../widgets/orden_reciente.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,8 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text("Food Genie"),
-        backgroundColor: Colors.deepOrangeAccent,
+        title: const Text("Fruteria Manu"),
+        backgroundColor: Colors.lightGreen,
         centerTitle: true,
         leading: IconButton(
             onPressed: () {}, icon: const Icon(Icons.account_circle, size: 30)),
@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => CartScreen())),
               child: Text(
-                "Cart (${currentUser.cart.length})",
+                "Carrito (${currentUser.carrito.length})",
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ))
         ],
@@ -50,8 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: const BorderSide(
-                          width: 0.8, color: Colors.deepOrangeAccent)),
-                  hintText: "Search Food or Restaurants",
+                          width: 0.8, color: Colors.lightGreen)),
+                  hintText: "Buscar frutas y fruterias",
                   prefixIcon: const Icon(Icons.search),
                   suffixIcon: IconButton(
                       onPressed: () {}, icon: const Icon(Icons.clear))),
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  "Nearby Restaurants",
+                  "Fruterias cercanas",
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _buildRestaurants() {
     final List<Widget> restaurantList = [];
-    restaurants.forEach((Restaurant restaurant) {
+    restaurants.forEach((Fruteria restaurant) {
       restaurantList.add(GestureDetector(
         onTap: () => Navigator.push(
           context,
@@ -117,14 +117,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          restaurant.name,
+                          restaurant.nombre,
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                           overflow: TextOverflow.ellipsis,
                         ),
                         RatingBar.builder(
                             initialRating: 5,
-                            itemCount: restaurant.rating.toInt(),
+                            itemCount: restaurant.calificacion.toInt(),
                             allowHalfRating: true,
                             minRating: 1,
                             unratedColor: Colors.grey,
@@ -133,10 +133,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemBuilder: (context, _) =>
                                 (const Icon(Icons.star, color: Colors.amber)),
                             onRatingUpdate: (rating) {
-                              Text(restaurant.rating.toString());
+                              Text(restaurant.calificacion.toString());
                             }),
                         Text(
-                          restaurant.address,
+                          restaurant.direccion,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w600),
                           overflow: TextOverflow.ellipsis,

@@ -1,42 +1,44 @@
 // Food
 
-import 'package:_food_delivery_ui_practice/models/food.dart';
-import 'package:_food_delivery_ui_practice/models/order.dart';
-import 'package:_food_delivery_ui_practice/models/restaurant.dart';
-import 'package:_food_delivery_ui_practice/models/user.dart';
+import 'package:mota/models/fruta.dart';
+import 'package:mota/models/orden.dart';
+import 'package:mota/models/fruteria.dart';
+import 'package:mota/models/usuario.dart';
 
-final _burrito =
-    Food(imageUrl: "assets/images/burrito.jpg", name: "Burrito", price: 8.99);
+final _burrito = Fruta(
+    imageUrl: "assets/images/Manzana.png", nombre: "Manzana", precio: 8.99);
 
-final _steak =
-    Food(imageUrl: "assets/images/steak.jpg", name: "Steak", price: 17.99);
+final _steak = Fruta(
+    imageUrl: "assets/images/naranja.jpg", nombre: "Naranja", precio: 17.99);
 
-final _pasta =
-    Food(imageUrl: "assets/images/pasta.jpg", name: "Pasta", price: 14.99);
+final _pasta = Fruta(
+    imageUrl: "assets/images/sandia.jpg", nombre: "Sandia", precio: 14.99);
 
 final _ramen =
-    Food(imageUrl: "assets/images/ramen.jpg", name: "Ramen", price: 13.99);
+    Fruta(imageUrl: "assets/images/kiwi.jpg", nombre: "Kiwi", precio: 13.99);
 
-final _pancakes =
-    Food(imageUrl: "assets/images/pancakes.jpg", name: "Pancakes", price: 9.99);
+final _pancakes = Fruta(
+    imageUrl: "assets/images/granada.jpg", nombre: "Granada", precio: 9.99);
 
 final _burger =
-    Food(imageUrl: "assets/images/burger.jpg", name: "Burger", price: 14.99);
+    Fruta(imageUrl: "assets/images/uvas.jpg", nombre: "Uvas", precio: 14.99);
 
-final _pizza =
-    Food(imageUrl: "assets/images/pizza.jpg", name: "Pizza", price: 11.99);
+final _pizza = Fruta(
+    imageUrl: "assets/images/zanahoria.jpg",
+    nombre: "Zanahoria",
+    precio: 11.99);
 
-final _salmon = Food(
-    imageUrl: "assets/images/salmon.jpg", name: "Salmon Salad", price: 12.99);
+final _salmon = Fruta(
+    imageUrl: "assets/images/lechuga.jpg", nombre: "Lechuga", precio: 12.99);
 
 // Restaurants
 
-final _restaurant0 = Restaurant(
-    imageUrl: "assets/images/restaurant0.jpg",
-    name: "Haveli Restaurant",
-    address: "2170-A Food St Fort Rd",
-    rating: 5,
-    menu: [
+final _restaurant0 = Fruteria(
+    imageUrl: "assets/images/lo1.jpg",
+    nombre: "Sucursal 1",
+    direccion: "2170-A Food St Fort Rd",
+    calificacion: 5,
+    lista: [
       _burrito,
       _steak,
       _pasta,
@@ -47,37 +49,37 @@ final _restaurant0 = Restaurant(
       _salmon
     ]);
 
-final _restaurant1 = Restaurant(
-    imageUrl: "assets/images/restaurant1.jpg",
-    name: "Andaaz Restaurant",
-    address: "2189 A Fort Rd",
-    rating: 4.1,
-    menu: [_steak, _pasta, _ramen, _pancakes, _burger, _pizza]);
+final _restaurant1 = Fruteria(
+    imageUrl: "assets/images/lo2.jpg",
+    nombre: "Sucursal 2",
+    direccion: "2189 A Fort Rd",
+    calificacion: 4.1,
+    lista: [_steak, _pasta, _ramen, _pancakes, _burger, _pizza]);
 
-final _restaurant2 = Restaurant(
-    imageUrl: "assets/images/restaurant2.jpg",
-    name: "Monal Restaurant",
-    address: "Plaza Liberty Park",
-    rating: 5,
-    menu: [_steak, _pasta, _pancakes, _burger, _pizza, _salmon]);
+final _restaurant2 = Fruteria(
+    imageUrl: "assets/images/lo3.jpg",
+    nombre: "Sucursal 3",
+    direccion: "Plaza Liberty Park",
+    calificacion: 5,
+    lista: [_steak, _pasta, _pancakes, _burger, _pizza, _salmon]);
 
-final _restaurant3 = Restaurant(
-    imageUrl: "assets/images/restaurant3.jpg",
-    name: "Spice Bazaar",
-    address: "T-01, Off MM Alam Road",
-    rating: 4.3,
-    menu: [_burger, _steak, _burger, _pizza, _salmon]);
+final _restaurant3 = Fruteria(
+    imageUrl: "assets/images/lo4.jpg",
+    nombre: "Sucursal 4",
+    direccion: "T-01, Off MM Alam Road",
+    calificacion: 4.3,
+    lista: [_burger, _steak, _burger, _pizza, _salmon]);
 
-final _restaurant4 = Restaurant(
-    imageUrl: "assets/images/restaurant4.jpg",
-    name: "Cooco's Den",
-    address: "2168/A Food St Fort Rd",
-    rating: 4.0,
-    menu: [_burger, _ramen, _pancakes, _salmon]);
+final _restaurant4 = Fruteria(
+    imageUrl: "assets/images/gif5.gif",
+    nombre: "Sucursal 5",
+    direccion: "2168/A Food St Fort Rd",
+    calificacion: 4.0,
+    lista: [_burger, _ramen, _pancakes, _salmon]);
 
 // Restaurants List
 
-final List<Restaurant> restaurants = [
+final List<Fruteria> restaurants = [
   _restaurant0,
   _restaurant1,
   _restaurant2,
@@ -87,56 +89,56 @@ final List<Restaurant> restaurants = [
 
 // User
 
-final currentUser = User(name: "Zeeshan Ahmed", orders: [
-  Order(
-      restaurant: _restaurant2,
-      food: _steak,
-      date: "Apr 30, 2022",
-      quantity: 1),
-  Order(
-      restaurant: _restaurant0,
-      food: _ramen,
-      date: "Apr 28, 2022",
-      quantity: 3),
-  Order(
-      restaurant: _restaurant1,
-      food: _burrito,
-      date: "Apr 30, 2022",
-      quantity: 2),
-  Order(
-      restaurant: _restaurant3,
-      food: _salmon,
-      date: "Apr 30, 2022",
-      quantity: 1),
-  Order(
-      restaurant: _restaurant4,
-      food: _pancakes,
-      date: "Apr 30, 2022",
-      quantity: 1)
-], cart: [
-  Order(
-      restaurant: _restaurant2,
-      food: _burger,
-      date: "Apr 29, 2022",
-      quantity: 2),
-  Order(
-      restaurant: _restaurant2,
-      food: _pasta,
-      date: "Apr 30, 2022",
-      quantity: 1),
-  Order(
-      restaurant: _restaurant3,
-      food: _salmon,
-      date: "Apr 30, 2022",
-      quantity: 1),
-  Order(
-      restaurant: _restaurant4,
-      food: _pancakes,
-      date: "Apr 29, 2022",
-      quantity: 3),
-  Order(
-      restaurant: _restaurant1,
-      food: _burrito,
-      date: "Apr 30, 2022",
-      quantity: 2)
+final currentUser = Usuario(nombre: "Zeeshan Ahmed", ordenes: [
+  Orden(
+      fruteria: _restaurant2,
+      fruta: _steak,
+      fecha: "Apr 30, 2022",
+      cantidad: 1),
+  Orden(
+      fruteria: _restaurant0,
+      fruta: _ramen,
+      fecha: "Apr 28, 2022",
+      cantidad: 3),
+  Orden(
+      fruteria: _restaurant1,
+      fruta: _burrito,
+      fecha: "Apr 30, 2022",
+      cantidad: 2),
+  Orden(
+      fruteria: _restaurant3,
+      fruta: _salmon,
+      fecha: "Apr 30, 2022",
+      cantidad: 1),
+  Orden(
+      fruteria: _restaurant4,
+      fruta: _pancakes,
+      fecha: "Apr 30, 2022",
+      cantidad: 1)
+], carrito: [
+  Orden(
+      fruteria: _restaurant2,
+      fruta: _burger,
+      fecha: "Apr 29, 2022",
+      cantidad: 2),
+  Orden(
+      fruteria: _restaurant2,
+      fruta: _pasta,
+      fecha: "Apr 30, 2022",
+      cantidad: 1),
+  Orden(
+      fruteria: _restaurant3,
+      fruta: _salmon,
+      fecha: "Apr 30, 2022",
+      cantidad: 1),
+  Orden(
+      fruteria: _restaurant4,
+      fruta: _pancakes,
+      fecha: "Apr 29, 2022",
+      cantidad: 3),
+  Orden(
+      fruteria: _restaurant1,
+      fruta: _burrito,
+      fecha: "Apr 30, 2022",
+      cantidad: 2)
 ]);

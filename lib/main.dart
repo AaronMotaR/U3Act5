@@ -1,4 +1,4 @@
-import 'package:_food_delivery_ui_practice/screens/home_screen.dart';
+import 'package:mota/screens/pagina_principal.dart';
 import 'package:flutter/material.dart';
 
 void main() {

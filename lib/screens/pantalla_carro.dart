@@ -1,5 +1,5 @@
-import 'package:_food_delivery_ui_practice/data/data.dart';
-import 'package:_food_delivery_ui_practice/models/order.dart';
+import 'package:mota/data/data.dart';
+import 'package:mota/models/orden.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
@@ -13,20 +13,20 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     double totalPrice = 0.0;
-    currentUser.cart.forEach((Order order) {
-      totalPrice += order.food.price * order.quantity;
+    currentUser.carrito.forEach((Orden order) {
+      totalPrice += order.fruta.precio * order.cantidad;
     });
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        title: Text("Cart (${currentUser.cart.length})"),
+        title: Text("Carrito (${currentUser.carrito.length})"),
         centerTitle: true,
-        backgroundColor: Colors.deepOrangeAccent,
+        backgroundColor: Colors.lightGreen,
       ),
       body: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
-            if (index < currentUser.cart.length) {
-              Order order = currentUser.cart[index];
+            if (index < currentUser.carrito.length) {
+              Orden order = currentUser.carrito[index];
               return _buildCart(order);
             }
             return Padding(
@@ -38,14 +38,14 @@ class _CartScreenState extends State<CartScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Estimate Total Time",
+                        "Tiempo estimado total",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "25 min",
+                        "25 minutos",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
@@ -58,7 +58,7 @@ class _CartScreenState extends State<CartScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Total Cost",
+                        "Costo total",
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
@@ -80,15 +80,15 @@ class _CartScreenState extends State<CartScreen> {
           },
           separatorBuilder: (BuildContext context, int index) =>
               Divider(thickness: 1.0, color: Colors.grey),
-          itemCount: currentUser.cart.length + 1),
+          itemCount: currentUser.carrito.length + 1),
       bottomSheet: Container(
         height: 80,
-        decoration: BoxDecoration(color: Colors.deepOrangeAccent, boxShadow: [
+        decoration: BoxDecoration(color: Colors.lightGreen, boxShadow: [
           BoxShadow(blurRadius: 6, color: Colors.black26, offset: Offset(0, -1))
         ]),
         child: Center(
           child: Text(
-            "CHECKOUT",
+            "Pago",
             style: TextStyle(
                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
@@ -97,7 +97,7 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  Widget _buildCart(Order order) {
+  Widget _buildCart(Orden order) {
     return Container(
       height: 170,
       child: Row(
@@ -112,7 +112,7 @@ class _CartScreenState extends State<CartScreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
-                          image: AssetImage(order.food.imageUrl),
+                          image: AssetImage(order.fruta.imageUrl),
                           fit: BoxFit.cover)),
                 ),
                 Expanded(
@@ -123,7 +123,7 @@ class _CartScreenState extends State<CartScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          order.food.name,
+                          order.fruta.nombre,
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
@@ -131,7 +131,7 @@ class _CartScreenState extends State<CartScreen> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          order.restaurant.name,
+                          order.fruteria.nombre,
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
@@ -150,13 +150,13 @@ class _CartScreenState extends State<CartScreen> {
                               Text(
                                 "-",
                                 style: TextStyle(
-                                    color: Colors.deepOrangeAccent,
+                                    color: Colors.lightGreen,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600),
                               ),
                               SizedBox(width: 20),
                               Text(
-                                order.quantity.toString(),
+                                order.cantidad.toString(),
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20,
@@ -166,7 +166,7 @@ class _CartScreenState extends State<CartScreen> {
                               Text(
                                 "+",
                                 style: TextStyle(
-                                    color: Colors.deepOrangeAccent,
+                                    color: Colors.lightGreen,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600),
                               ),
@@ -183,7 +183,7 @@ class _CartScreenState extends State<CartScreen> {
           Container(
             margin: EdgeInsets.all(12),
             child: Text(
-              "\$${order.food.price * order.quantity}",
+              "\$${order.fruta.precio * order.cantidad}",
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
